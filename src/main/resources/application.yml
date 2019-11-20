@@ -1,0 +1,47 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboottest?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: kofxz007
+    druid: 
+      #driver-class-name: com.mysql.jdbc.Driver
+      #url: jdbc:mysql://localhost:3306/springboottest?serverTimezone=UTC&characterEncoding=utf-8
+      #username: root
+      #password: kofxz007
+      #连接池
+      initial-size: 8
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runsMillis: 60000
+      min-evictable-idle-timeMillis: 300000
+      validation-query: select 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-max-count: 1000
+        session-stat-enable: true
+        profile-enable: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: "/druid/*"
+        login-username: root
+        login-password: root
+        allow: 127.0.0.1
+        reset-enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+        
